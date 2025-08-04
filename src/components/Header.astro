@@ -1,0 +1,113 @@
+---
+import { SITE } from '~/utils/config';
+---
+
+<div class="header max-xs:h-[660px] sm:h-[885px] md:h-[920px] lg:h-[850px] h-[820px]">
+  <div class="header-bg-pink absolute sm:top-[400px] sm:left-[400px] top-[300px] left-[100px]"></div>
+  <div class="header-bg-blue absolute sm:top-[400px] sm:left-[400px] top-[300px] left-[100px]"></div>
+
+  <div class="content h-full flex flex-col w-full">
+    <div class="absolute w-full">
+      <img src="/assets/images/makeshift-logo.png" alt="logo" width={400} class="max-lg:mx-auto" />
+      
+    </div>
+
+    <!-- CTA Section -->
+    <div class="flex-1 flex items-center justify-center z-10 relative">
+      <div class="text-center max-w-4xl mx-auto px-6">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          Makeshift Software Inc.
+        </h1>
+        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+          We help non-technical founders launch secure, scalable AI web apps
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button id="booking-btn" class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            Get Started Today
+          </button>
+          <button id="services-btn" class="border-2 border-white text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 hover:bg-white hover:text-gray-900">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .header {
+    position: relative;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    position: relative;
+    overflow: hidden;
+
+    .logo {
+      margin: 64px 0 0 64px;
+    }
+
+    .header-bg-pink {
+      width: 1136.422px;
+      height: 951.387px;
+      transform: rotate(-38.088deg);
+      flex-shrink: 0;
+      border-radius: 1136.422px;
+      background: #D20202;
+      filter: blur(110px);
+      animation: bg-circle-pink 8s linear infinite;
+    }
+
+    .header-bg-blue {
+      width: 1136.422px;
+      height: 951.387px;
+      transform: rotate(-38.088deg);
+      flex-shrink: 0;
+      border-radius: 1136.422xspx;
+      background: #262626;
+      filter: blur(110px);
+      animation: bg-circle-blue 8s linear infinite;
+    }
+
+    .content {
+      position: absolute;
+      top: 0;
+
+      .timer-container {
+        border-radius: 16px;
+        background: #1a1d28;
+      }
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const bookingBtn = document.getElementById('booking-btn');
+    const servicesBtn = document.getElementById('services-btn');
+    
+    function smoothScrollTo(targetId: string) {
+      const target = document.querySelector(targetId) as HTMLElement;
+      if (target) {
+        // Get the target's position relative to the viewport
+        const targetRect = target.getBoundingClientRect();
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Calculate the exact position to scroll to
+        const targetPosition = currentScrollTop + targetRect.top - 80; // 80px offset for better visibility
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+    
+    if (bookingBtn) {
+      bookingBtn.addEventListener('click', () => smoothScrollTo('#booking'));
+    }
+    
+    if (servicesBtn) {
+      servicesBtn.addEventListener('click', () => smoothScrollTo('#our-services'));
+    }
+  });
+</script>
